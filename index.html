@@ -918,8 +918,9 @@
                     noBtn.style.transform = `translate(${xPos}px, ${yPos}px)`;
                 };
                 
-                // Move the button when hovered
+                // Move the button when hovered (desktop) or touched (mobile)
                 noBtn.addEventListener('mouseover', moveButton);
+                noBtn.addEventListener('touchstart', moveButton); // Add touch support
                 
                 // Make the No button eventually turn into a Yes button after 3 tries
                 let clickCount = 0;
@@ -931,6 +932,7 @@
                         noBtn.textContent = "Ok fine, Yes!";
                         noBtn.className = "btn btn-yes";
                         noBtn.removeEventListener('mouseover', moveButton);
+                        noBtn.removeEventListener('touchstart', moveButton); // Remove touch event too
                         noBtn.style.transform = 'none';
                         
                         noBtn.addEventListener('click', function() {
