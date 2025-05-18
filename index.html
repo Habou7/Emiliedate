@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Emilie ❤️</title>
+    <style>
+        :root {
+            --primary: #ff375f;
+            --secondary: #ff9f0a;
+            --background: #f5f5f7;
+            --text: #1d1d1f;
+            --success: #30d158;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Cat Character */
+        .character {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        
+        .cat {
+            position: relative;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .cat-body {
+            width: 80px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            border: 3px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cat-ear {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid #333;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: -12px;
+        }
+        
+        .cat-ear.left {
+            left: 12px;
+            transform: rotate(-15deg);
+        }
+        
+        .cat-ear.right {
+            right: 12px;
+            transform: rotate(15deg);
+        }
+        
+        .cat-ear-inner {
+            width: 12px;
+            height: 12px;
+            background-color: #ffb6c1;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            top: 2px;
+            left: 4px;
+            opacity: 0.6;
+        }
+        
+        .cat-eye {
+            width: 8px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 28px;
+        }
+        
+        .cat-eye.left {
+            left: 25px;
+        }
+        
+        .cat-eye.right {
+            right: 25px;
+        }
+        
+        .cat-nose {
+            width: 6px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .cat-mouth {
+            width: 6px;
+            height: 6px;
+            border-bottom: 2px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .cat-arm {
+            width: 20px;
+            height: 30px;
+            background-color: white;
+            border: 3px solid #333;
+            border-radius: 25px;
+            position: absolute;
+            top: 30px;
+        }
+        
+        .cat-arm.left {
+            left: -5px;
+            transform: rotate(25deg);
+        }
+        
+        .cat-arm.right {
+            right: -5px;
+            transform: rotate(-25deg);
+        }
+        
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .shine {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+        
+        .shine.one {
+            top: 50px;
+            left: -10px;
+            animation: twinkle 2s infinite;
+        }
+        
+        .shine.two {
+            top: 30px;
+            right: -10px;
+            animation: twinkle 2s infinite 0.5s;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-yes {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(48, 209, 88, 0.4);
+        }
+        
+        .btn-no {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-no:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(255, 55, 95, 0.4);
+        }
+        
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            transform: rotate(45deg);
+            animation: fall 3s ease-in infinite;
+            opacity: 0;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(45deg) scale(0.3);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(45deg) scale(0.3);
+                opacity: 0;
+            }
+        }
+        
+        .success-message {
+            margin-top: 1rem;
+            animation: fadeIn 1s ease;
+            display: none;
+        }
+        
+        .no-message {
+            display: none;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        /* Selection Screens */
+        .selection-screen {
+            display: none;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .selection-screen h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Day and Time Pickers */
+        .day-picker, .time-picker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .day-option, .time-option, .option-item {
+            flex: 1 0 calc(33.333% - 0.5rem);
+            background-color: var(--background);
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 0.75rem 0.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            min-width: 70px;
+        }
+        
+        .day-option:hover, .time-option:hover, .option-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .day-option.selected, .time-option.selected, .option-item.selected {
+            border-color: var(--success);
+            background-color: rgba(48, 209, 88, 0.1);
+            position: relative;
+        }
+        
+        /* Step System */
+        .step-container {
+            display: none;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            gap: 8px;
+        }
+        
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .step-dot.active {
+            background-color: var(--success);
+            transform: scale(1.3);
+        }
+        
+        .step-title {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .step-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-next {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .btn-back {
+            background-color: #e0e0e0;
+            color: var(--text);
+        }
+        
+        .option-item.selected {
+            border-color: var(--success);
+            background-color: rgba(48, 209, 88, 0.1);
+            position: relative;
+        }
+        
+        .option-item.selected::after {
+            content: "✓";
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: var(--success);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Extra Styles for Better Look */
+        .card {
+            background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .option-item {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .option-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .final-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        
+        .option-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .option-item {
+            display: flex;
+            flex-direction: column;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .option-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        /* Final Message */
+        .final-message {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #fef8e8;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary);
+            animation: fadeIn 0.5s ease;
+            text-align: left;
+        }
+        
+        .final-message h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .final-message p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .screenshot-tip {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Hey Emilie!</h1>
+        <div class="character">
+            <div class="cat bounce-animation">
+                <div class="cat-body">
+                    <div class="cat-ear left">
+                        <div class="cat-ear-inner"></div>
+                    </div>
+                    <div class="cat-ear right">
+                        <div class="cat-ear-inner"></div>
+                    </div>
+                    <div class="cat-eye left"></div>
+                    <div class="cat-eye right"></div>
+                    <div class="cat-nose"></div>
+                    <div class="cat-mouth"></div>
+                    <div class="cat-arm left"></div>
+                    <div class="cat-arm right"></div>
+                </div>
+                <div class="shine one"></div>
+                <div class="shine two"></div>
+            </div>
+        </div>
+        
+        <div id="questionScreen">
+            <p>Would you do me the honor of going on a date with me?</p>
+            
+            <div class="buttons">
+                <button class="btn btn-yes" id="yesBtn">Yes!</button>
+                <button class="btn btn-no" id="noBtn">No</button>
+            </div>
+            
+            <div class="no-message" id="noMessage">
+                Did you mean to click "Yes"? 🥺
+            </div>
+        </div>
+        
+        <div id="dateSelectionScreen" class="selection-screen">
+            <div class="success-message" style="display: block;">
+                <h3>Yay! I'm so excited! ❤️</h3>
+                <p>Let's plan our perfect date!</p>
+            </div>
+            
+            <div class="step-indicator">
+                <div class="step-dot active" data-step="1"></div>
+                <div class="step-dot" data-step="2"></div>
+                <div class="step-dot" data-step="3"></div>
+                <div class="step-dot" data-step="4"></div>
+            </div>
+            
+            <!-- Step 1: Restaurant -->
+            <div class="step-container" id="step1" style="display: block;">
+                <div class="step-title">Step 1: Choose a Restaurant 🍽️</div>
+                <div class="option-container">
+                    <div class="option-item" data-restaurant="kato">
+                        <div class="option-title">KATO Restaurant 🍣</div>
+                        <div class="option-desc">Sushis - Japanese Fusion Cuisine</div>
+                    </div>
+                    <div class="option-item" data-restaurant="bistro">
+                        <div class="option-title">Bistro Mexican 129 🌮</div>
+                        <div class="option-desc">Authentic Mexican Cuisine</div>
+                    </div>
+                    <div class="option-item" data-restaurant="darkfork">
+                        <div class="option-title">Dark Fork 🍝</div>
+                        <div class="option-desc">Upscale Italian cuisine with a modern twist</div>
+                    </div>
+                </div>
+                <div class="step-buttons">
+                    <div></div> <!-- Empty div for spacing -->
+                    <button class="btn btn-next" id="nextStep1" disabled>Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Dessert -->
+            <div class="step-container" id="step2">
+                <div class="step-title">Step 2: Choose a Dessert Place 🍦</div>
+                <div class="option-container">
+                    <div class="option-item" data-dessert="favoris">
+                        <div class="option-title">Chocolate Favoris 🍫</div>
+                        <div class="option-desc">Gourmet chocolate and ice cream</div>
+                    </div>
+                    <div class="option-item" data-dessert="dq">
+                        <div class="option-title">Dairy Queen 🍦</div>
+                        <div class="option-desc">Ice cream treats and desserts</div>
+                    </div>
+                    <div class="option-item" data-dessert="cigale">
+                        <div class="option-title">La Cigale 🧁</div>
+                        <div class="option-desc">Artisanal desserts and pastries</div>
+                    </div>
+                </div>
+                <div class="step-buttons">
+                    <button class="btn btn-back" id="backStep2">Back</button>
+                    <button class="btn btn-next" id="nextStep2" disabled>Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Day -->
+            <div class="step-container" id="step3">
+                <div class="step-title">Step 3: Pick a Day 📅</div>
+                <div class="day-picker">
+                    <div class="day-option" data-day="Friday">Friday</div>
+                    <div class="day-option" data-day="Saturday">Saturday</div>
+                    <div class="day-option" data-day="Sunday">Sunday</div>
+                    <div class="day-option" data-day="Monday">Monday</div>
+                    <div class="day-option" data-day="Tuesday">Tuesday</div>
+                    <div class="day-option" data-day="Wednesday">Wednesday</div>
+                    <div class="day-option" data-day="Thursday">Thursday</div>
+                </div>
+                <div class="step-buttons">
+                    <button class="btn btn-back" id="backStep3">Back</button>
+                    <button class="btn btn-next" id="nextStep3" disabled>Next</button>
+                </div>
+            </div>
+            
+            <!-- Step 4: Time -->
+            <div class="step-container" id="step4">
+                <div class="step-title">Step 4: Pick a Time ⏰</div>
+                <div class="time-picker">
+                    <div class="time-option" data-time="6:00 PM">6:00 PM</div>
+                    <div class="time-option" data-time="7:00 PM">7:00 PM</div>
+                    <div class="time-option" data-time="8:00 PM">8:00 PM</div>
+                    <div class="time-option" data-time="9:00 PM">9:00 PM</div>
+                </div>
+                <div class="step-buttons">
+                    <button class="btn btn-back" id="backStep4">Back</button>
+                    <button class="btn btn-yes" id="confirmSelectionBtn" disabled>Confirm Date</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="final-message" id="finalMessage">
+            <h3>It's a Date! <span class="heartbeat">💕</span></h3>
+            <div id="dateSummary"></div>
+            <div class="screenshot-tip">
+                <strong>Tip:</strong> Take a screenshot and send it to your boyfriend!
+            </div>
+        </div>
+    </div>
+    
+    <div class="hearts" id="hearts"></div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- DOM ELEMENTS ---
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            const questionScreen = document.getElementById('questionScreen');
+            const dateSelectionScreen = document.getElementById('dateSelectionScreen');
+            const finalMessage = document.getElementById('finalMessage');
+            const noMessage = document.getElementById('noMessage');
+            const hearts = document.getElementById('hearts');
+            const confirmSelectionBtn = document.getElementById('confirmSelectionBtn');
+            const dateSummary = document.getElementById('dateSummary');
+            
+            // Step navigation buttons
+            const nextStep1 = document.getElementById('nextStep1');
+            const nextStep2 = document.getElementById('nextStep2');
+            const nextStep3 = document.getElementById('nextStep3');
+            const backStep2 = document.getElementById('backStep2');
+            const backStep3 = document.getElementById('backStep3');
+            const backStep4 = document.getElementById('backStep4');
+            
+            // Step containers
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+            const step4 = document.getElementById('step4');
+            
+            // Variables to store selections
+            let selectedRestaurant = '';
+            let selectedDessert = '';
+            let selectedDay = '';
+            let selectedTime = '';
+            
+            // --- CAT ANIMATION ---
+            // Make the cat's eye wink occasionally
+            setInterval(() => {
+                const rightEye = document.querySelector('.cat-eye.right');
+                rightEye.style.height = '2px';
+                setTimeout(() => {
+                    rightEye.style.height = '10px';
+                }, 200);
+            }, 3000);
+            
+            // --- YES BUTTON BEHAVIOR ---
+            yesBtn.addEventListener('click', function() {
+                questionScreen.style.display = 'none';
+                dateSelectionScreen.style.display = 'block';
+                hearts.style.display = 'block';
+                noMessage.style.display = 'none';
+                
+                // Reset any previous selections
+                document.querySelectorAll('.option-item, .day-option, .time-option').forEach(item => {
+                    item.classList.remove('selected');
+                });
+                
+                selectedRestaurant = '';
+                selectedDessert = '';
+                selectedDay = '';
+                selectedTime = '';
+                
+                nextStep1.disabled = true;
+                nextStep2.disabled = true;
+                nextStep3.disabled = true;
+                confirmSelectionBtn.disabled = true;
+                
+                // Create falling hearts animation
+                createHearts();
+            });
+            
+            // --- RESTAURANT SELECTION (STEP 1) ---
+            document.querySelectorAll('[data-restaurant]').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('[data-restaurant]').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedRestaurant = this.getAttribute('data-restaurant');
+                    nextStep1.disabled = false;
+                });
+            });
+            
+            nextStep1.addEventListener('click', function() {
+                step1.style.display = 'none';
+                step2.style.display = 'block';
+                document.querySelector('.step-dot[data-step="1"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="2"]').classList.add('active');
+            });
+            
+            // --- DESSERT SELECTION (STEP 2) ---
+            document.querySelectorAll('[data-dessert]').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('[data-dessert]').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedDessert = this.getAttribute('data-dessert');
+                    nextStep2.disabled = false;
+                });
+            });
+            
+            nextStep2.addEventListener('click', function() {
+                step2.style.display = 'none';
+                step3.style.display = 'block';
+                document.querySelector('.step-dot[data-step="2"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="3"]').classList.add('active');
+            });
+            
+            backStep2.addEventListener('click', function() {
+                step2.style.display = 'none';
+                step1.style.display = 'block';
+                document.querySelector('.step-dot[data-step="2"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="1"]').classList.add('active');
+            });
+            
+            // --- DAY SELECTION (STEP 3) ---
+            document.querySelectorAll('.day-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.day-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedDay = this.getAttribute('data-day');
+                    nextStep3.disabled = false;
+                });
+            });
+            
+            nextStep3.addEventListener('click', function() {
+                step3.style.display = 'none';
+                step4.style.display = 'block';
+                document.querySelector('.step-dot[data-step="3"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="4"]').classList.add('active');
+            });
+            
+            backStep3.addEventListener('click', function() {
+                step3.style.display = 'none';
+                step2.style.display = 'block';
+                document.querySelector('.step-dot[data-step="3"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="2"]').classList.add('active');
+            });
+            
+            // --- TIME SELECTION (STEP 4) ---
+            document.querySelectorAll('.time-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.time-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedTime = this.getAttribute('data-time');
+                    confirmSelectionBtn.disabled = false;
+                });
+            });
+            
+            backStep4.addEventListener('click', function() {
+                step4.style.display = 'none';
+                step3.style.display = 'block';
+                document.querySelector('.step-dot[data-step="4"]').classList.remove('active');
+                document.querySelector('.step-dot[data-step="3"]').classList.add('active');
+            });
+            
+            // --- CONFIRM SELECTIONS ---
+            confirmSelectionBtn.addEventListener('click', function() {
+                dateSelectionScreen.style.display = 'none';
+                finalMessage.style.display = 'block';
+                
+                // Create summary
+                let restaurantName = '';
+                let restaurantDesc = '';
+                let dessertName = '';
+                let dessertDesc = '';
+                let restaurantEmoji = '';
+                let dessertEmoji = '';
+                
+                document.querySelectorAll('[data-restaurant]').forEach(option => {
+                    if (option.getAttribute('data-restaurant') === selectedRestaurant) {
+                        restaurantName = option.querySelector('.option-title').textContent;
+                        restaurantDesc = option.querySelector('.option-desc').textContent;
+                        
+                        // Extract emoji if present
+                        const emojiMatch = restaurantName.match(/[\u{1F300}-\u{1F6FF}]/u);
+                        restaurantEmoji = emojiMatch ? emojiMatch[0] : '🍽️';
+                    }
+                });
+                
+                document.querySelectorAll('[data-dessert]').forEach(option => {
+                    if (option.getAttribute('data-dessert') === selectedDessert) {
+                        dessertName = option.querySelector('.option-title').textContent;
+                        dessertDesc = option.querySelector('.option-desc').textContent;
+                        
+                        // Extract emoji if present
+                        const emojiMatch = dessertName.match(/[\u{1F300}-\u{1F6FF}]/u);
+                        dessertEmoji = emojiMatch ? emojiMatch[0] : '🍦';
+                    }
+                });
+                
+                // Clean up the emoji from the text
+                restaurantName = restaurantName.replace(/[\u{1F300}-\u{1F6FF}]/u, '').trim();
+                dessertName = dessertName.replace(/[\u{1F300}-\u{1F6FF}]/u, '').trim();
+                
+                let html = `
+                    <p><span class="final-emoji">📅</span><strong>Day:</strong> ${selectedDay}</p>
+                    <p><span class="final-emoji">⏰</span><strong>Time:</strong> ${selectedTime}</p>
+                    <p><span class="final-emoji">${restaurantEmoji}</span><strong>Dinner:</strong> ${restaurantName}</p>
+                    <p><span class="final-emoji">${dessertEmoji}</span><strong>Dessert:</strong> ${dessertName}</p>
+                    <p class="heartbeat">💕 I can't wait to see you! 💕</p>
+                `;
+                
+                dateSummary.innerHTML = html;
+                
+                // Create even more falling hearts for celebration
+                createHearts(40);
+            });
+            
+            // --- NO BUTTON BEHAVIOR ---
+            noBtn.addEventListener('click', function() {
+                noMessage.style.display = 'block';
+                
+                // Make the button run away
+                noBtn.style.position = 'relative';
+                
+                // Random position within the card
+                const moveButton = () => {
+                    const xPos = Math.random() * 100 - 50;
+                    const yPos = Math.random() * 80 - 40;
+                    noBtn.style.transform = `translate(${xPos}px, ${yPos}px)`;
+                };
+                
+                // Move the button when hovered
+                noBtn.addEventListener('mouseover', moveButton);
+                
+                // Make the No button eventually turn into a Yes button after 3 tries
+                let clickCount = 0;
+                noBtn.addEventListener('click', function(e) {
+                    clickCount++;
+                    e.stopPropagation();
+                    
+                    if (clickCount >= 3) {
+                        noBtn.textContent = "Ok fine, Yes!";
+                        noBtn.className = "btn btn-yes";
+                        noBtn.removeEventListener('mouseover', moveButton);
+                        noBtn.style.transform = 'none';
+                        
+                        noBtn.addEventListener('click', function() {
+                            questionScreen.style.display = 'none';
+                            dateSelectionScreen.style.display = 'block';
+                            hearts.style.display = 'block';
+                            noMessage.style.display = 'none';
+                            
+                            // Create falling hearts animation
+                            createHearts();
+                        });
+                    } else {
+                        // Change the message each time
+                        const messages = [
+                            "Are you absolutely sure? 😢",
+                            "Please reconsider! 🙏",
+                            "Last chance..."
+                        ];
+                        noMessage.textContent = messages[clickCount - 1];
+                    }
+                });
+            });
+            
+            // --- HEART ANIMATION FUNCTION ---
+            function createHearts(count = 20) {
+                // Clear existing hearts
+                hearts.innerHTML = '';
+                
+                // Create hearts
+                for (let i = 0; i < count; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    
+                    // Random position, size and delay
+                    const left = Math.random() * 100;
+                    const size = Math.random() * 12 + 8;
+                    const delay = Math.random() * 3;
+                    
+                    heart.style.left = `${left}%`;
+                    heart.style.width = `${size}px`;
+                    heart.style.height = `${size}px`;
+                    heart.style.animationDelay = `${delay}s`;
+                    
+                    // 50% chance of being the secondary color
+                    if (Math.random() > 0.5) {
+                        heart.style.backgroundColor = '#ff9f0a';
+                    }
+                    
+                    hearts.appendChild(heart);
+                    
+                    // Also set the :before and :after elements to the same color
+                    const style = document.createElement('style');
+                    style.textContent = `
+                        .heart:nth-child(${i+1}):before,
+                        .heart:nth-child(${i+1}):after {
+                            background-color: ${heart.style.backgroundColor || 'var(--primary)'};
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
